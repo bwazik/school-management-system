@@ -306,7 +306,7 @@ Route::group(
             });
         });
     # End Settings
-
+        
     Livewire::setUpdateRoute(function ($handle) {
         return Route::post('/livewire/update', $handle);
     });
