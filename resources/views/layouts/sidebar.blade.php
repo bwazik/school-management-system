@@ -16,7 +16,7 @@
                         fill="#7367F0" />
                 </svg>
             </span>
-            <span class="app-brand-text demo menu-text fw-bold">Abdullah</span>
+            <span class="app-brand-text demo menu-text fw-bold">{{ trans('layouts/sidebar.header') }}</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
@@ -34,7 +34,7 @@
         </li>
         <!-- Home -->
         <li class="menu-item">
-            <a href="{{ route('dashboard') }}" class="menu-link">
+            <a href="{{ route('admin.dashboard') }}" class="menu-link">
                 <i class="menu-icon mdi mdi-home-outline"></i>
                 <div>{{ trans('layouts/sidebar.home') }}</div>
             </a>

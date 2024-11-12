@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -25,27 +26,37 @@ use App\Http\Controllers\StudentActivities\LibraryController;
 use App\Http\Controllers\Settings\SettingsController;
 use Livewire\Livewire;
 
-Auth::routes(['register' => false, 'confirm' => false, 'reset' => false]);
-
-Route::group(
-    [
-        'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'guest']
-    ], function(){
-        Auth::routes(['register' => false, 'confirm' => false, 'reset' => false, 'logout' => false]);
-
-        Route::get('/', function () {
-            return view('auth.login');
-        });
+Route::controller(LoginController::class)->group(function() {
+    Route::post('/{guard}/logout', 'logout')
+        ->middleware(['auth:web,parent,teacher,student'])
+        ->where('guard', 'web|parent|teacher|student')
+        ->name('logout');
 });
 
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth']
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'guest:web,parent,teacher,student']
     ], function(){
 
-    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+
+        Route::controller(LoginController::class)->group(function() {
+            Route::get('/{guard}', 'showLoginForm')->name('login.show');
+            Route::post('/{guard}', 'login')->name('login');
+        });
+
+        Route::get('/', function () {
+            return view('auth.index');
+        })->name('login.index');
+});
+
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale() . '/admin',
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:web']
+    ], function(){
+
+    Route::get('dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard');
 
     # Start School Management
         # Stages
@@ -306,8 +317,12 @@ Route::group(
             });
         });
     # End Settings
-        
+
     Livewire::setUpdateRoute(function ($handle) {
         return Route::post('/livewire/update', $handle);
     });
 });
+
+require __DIR__ . '/parent.php';
+require __DIR__ . '/teacher.php';
+require __DIR__ . '/student.php';

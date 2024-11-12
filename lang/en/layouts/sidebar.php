@@ -2,6 +2,7 @@
 
 return [
     'program' => 'School Management Program',
+    'header' => 'Sch. Program',
     'home' => 'Home',
     ################################    ################################
     'schoolManagement' => 'School Management',

@@ -54,16 +54,16 @@
     });
 
     toastr.options = {
-        'closeButton' : true,
-        'progressBar' : true,
+        'closeButton': true,
+        'progressBar': true,
     }
 
     function initializeSelect2(modalId, elementId, value) {
         var select2Element = $('#' + modalId + ' #' + elementId);
         if (select2Element.length) {
-        select2Element.wrap('<div class="position-relative"></div>').select2({
-            placeholder: '{{ trans('schoolmanagement/grades.choose') }}',
-            dropdownParent: select2Element.parent(),
+            select2Element.wrap('<div class="position-relative"></div>').select2({
+                placeholder: '{{ trans('schoolmanagement/grades.choose') }}',
+                dropdownParent: select2Element.parent(),
             });
             select2Element.val(value).trigger('change');
         }

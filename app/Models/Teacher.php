@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Translatable\HasTranslations;
 use App\Models\Subject;
 use App\Models\Gender;
 use App\Models\Classroom;
 
-class Teacher extends Model
+class Teacher extends Authenticatable
 {
     use HasTranslations;
 
