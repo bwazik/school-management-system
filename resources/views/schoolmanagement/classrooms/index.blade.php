@@ -108,7 +108,7 @@
                 var stage = $(this).val();
                 if (stage) {
                     $.ajax({
-                        url: "{{ URL::to('classrooms/stages') }}/" + stage,
+                        url: "{{ URL::to('admin/classrooms/stages') }}/" + stage,
                         type: "GET",
                         dataType: "json",
                         success: function(data) {
@@ -209,7 +209,7 @@
             if (typeof teachers === 'string') {
                 teachers = teachers.split(',');
             }
-            
+
             $('#edit-classroom-modal #id').val(id);
             $('#edit-classroom-modal #name_ar').val(name_ar);
             $('#edit-classroom-modal #name_en').val(name_en);

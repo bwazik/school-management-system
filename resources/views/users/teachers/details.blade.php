@@ -131,8 +131,8 @@
                                         <td>{{ $attachment -> file_name }}</td>
                                         <td>{{ $attachment -> created_at -> diffForHumans() }}</td>
                                         <td>
-                                            <form id="show-form-{{ $attachment -> id }}" action="{{ url('teachers/attachment/show/'. $teacher -> email . '/' . $attachment -> file_name) }}" method="POST">@csrf</form>
-                                            <form id="download-form-{{ $attachment -> id }}" action="{{ url('teachers/attachment/download/'. $teacher -> email . '/' . $attachment -> file_name) }}" method="POST">@csrf</form>
+                                            <form id="show-form-{{ $attachment -> id }}" action="{{ url('admin/teachers/attachment/show/'. $teacher -> email . '/' . $attachment -> file_name) }}" method="POST">@csrf</form>
+                                            <form id="download-form-{{ $attachment -> id }}" action="{{ url('admin/teachers/attachment/download/'. $teacher -> email . '/' . $attachment -> file_name) }}" method="POST">@csrf</form>
                                             <button onclick="event.preventDefault();document.getElementById('show-form-{{ $attachment -> id }}').submit();" class="btn btn-outline-warning btn-sm waves-effect me-1"><i class="ti ti-eye"></i></button>
                                             <button onclick="event.preventDefault();document.getElementById('download-form-{{ $attachment -> id }}').submit();" class="btn btn-outline-success btn-sm waves-effect me-1"><i class="ti ti-download"></i></button>
                                             <button data-bs-toggle="modal" data-bs-target="#delete-attachment-modal-{{ $attachment -> id }}" class="btn btn-outline-danger btn-sm waves-effect me-1"><i class="ti ti-trash"></i></button>
@@ -149,7 +149,7 @@
                                                 <hr style="margin: 0.1rem">
                                                 <div class="modal-body">
                                                     {{ trans('users/teachers.deleteWarning') }}
-                                                    <form id="delete-form" action="{{ url('teachers/attachment/delete/'. $attachment -> id . '/' . $teacher -> email . '/' . $attachment -> file_name) }}" method="POST">
+                                                    <form id="delete-form" action="{{ url('admin/teachers/attachment/delete/'. $attachment -> id . '/' . $teacher -> email . '/' . $attachment -> file_name) }}" method="POST">
                                                         @csrf
                                                 </div>
                                                 <hr style="margin: 0.1rem">

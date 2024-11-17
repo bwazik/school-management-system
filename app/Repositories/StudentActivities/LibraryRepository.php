@@ -41,8 +41,8 @@ class LibraryRepository implements LibraryRepositoryInterface
                 })
                 ->addColumn('actions', function ($row) {
                     return '
-                        <form id="show-form-' . $row->id . '" action="' . url('library/show/' . $row->teacher->email . '/' . $row->file_name) . '" method="POST" target="_blank">' . csrf_field() . '</form>
-                        <form id="download-form-' . $row->id . '" action="' . url('library/download/' . $row->teacher->email . '/' . $row->file_name) . '" method="POST" target="_blank">' . csrf_field() . '</form>
+                        <form id="show-form-' . $row->id . '" action="' . url('admin/library/show/' . $row->teacher->email . '/' . $row->file_name) . '" method="POST" target="_blank">' . csrf_field() . '</form>
+                        <form id="download-form-' . $row->id . '" action="' . url('admin/library/download/' . $row->teacher->email . '/' . $row->file_name) . '" method="POST" target="_blank">' . csrf_field() . '</form>
                         <button onclick="event.preventDefault();document.getElementById(\'show-form-' . $row->id . '\').submit();" class="btn btn-outline-info btn-sm waves-effect me-1"><i class="ti ti-eye"></i></button>
                         <button onclick="event.preventDefault();document.getElementById(\'download-form-' . $row->id . '\').submit();" class="btn btn-outline-success btn-sm waves-effect me-1"><i class="ti ti-download"></i></button>
                         <button id="edit-book-button" data-bs-toggle="modal" data-bs-target="#edit-book-modal"

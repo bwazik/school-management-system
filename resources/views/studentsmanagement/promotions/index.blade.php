@@ -122,7 +122,7 @@
                 var stage = $(this).val();
                 if (stage) {
                     $.ajax({
-                        url: "{{ URL::to('classrooms/stages') }}/" + stage,
+                        url: "{{ URL::to('admin/classrooms/stages') }}/" + stage,
                         type: "GET",
                         dataType: "json",
                         success: function(data) {
@@ -143,7 +143,7 @@
                 var grade = $(this).val();
                 if (grade) {
                     $.ajax({
-                        url: "{{ URL::to('classrooms/grades') }}/" + grade,
+                        url: "{{ URL::to('admin/classrooms/grades') }}/" + grade,
                         type: "GET",
                         dataType: "json",
                         success: function(data) {
@@ -164,7 +164,7 @@
                 var stage = $(this).val();
                 if (stage) {
                     $.ajax({
-                        url: "{{ URL::to('classrooms/stages') }}/" + stage,
+                        url: "{{ URL::to('admin/classrooms/stages') }}/" + stage,
                         type: "GET",
                         dataType: "json",
                         success: function(data) {
@@ -185,7 +185,7 @@
                 var grade = $(this).val();
                 if (grade) {
                     $.ajax({
-                        url: "{{ URL::to('classrooms/grades') }}/" + grade,
+                        url: "{{ URL::to('admin/classrooms/grades') }}/" + grade,
                         type: "GET",
                         dataType: "json",
                         success: function(data) {
