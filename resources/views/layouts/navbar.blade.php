@@ -1,5 +1,6 @@
 <!-- Navbar -->
-<nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+<nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+    id="layout-navbar">
     <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
         <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
             <i class="ti ti-menu-2 ti-sm"></i>
@@ -31,8 +32,10 @@
                 <ul class="dropdown-menu dropdown-menu-end">
                     @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                         <li>
-                            <a class="dropdown-item" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                <i class="fi @if ($localeCode == 'ar') fi-eg @else fi-us @endif fis rounded-circle me-1 fs-3"></i>
+                            <a class="dropdown-item"
+                                href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                <i
+                                    class="fi @if ($localeCode == 'ar') fi-eg @else fi-us @endif fis rounded-circle me-1 fs-3"></i>
                                 <span class="align-middle">{{ $properties['native'] }}</span>
                             </a>
                         </li>
@@ -370,12 +373,13 @@
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
-                                        <img src="{{ URL::asset('assets/img/avatars/1.png') }}" alt class="h-auto rounded-circle" />
+                                        <img src="{{ URL::asset('assets/img/avatars/1.png') }}" alt
+                                            class="h-auto rounded-circle" />
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">John Doe</span>
-                                    <small class="text-muted">Admin</small>
+                                    <span class="fw-semibold d-block">{{ Auth::guard('parent')->check() ? Auth::guard('parent')->user()->father_name . ' - ' . Auth::guard('parent')->user()->mother_name : (Auth::guard('teacher')->check() ? Auth::guard('teacher')->user()->name : (Auth::guard('student')->check() ? Auth::guard('student')->user()->name : Auth::guard('web')->user()->name)) }}</span>
+                                    <small class="text-muted">{{ Auth::guard('parent')->check() ? trans('layouts/navbar.guards.parent') : (Auth::guard('teacher')->check() ? trans('layouts/navbar.guards.teacher') : (Auth::guard('student')->check() ? trans('layouts/navbar.guards.student') : trans('layouts/navbar.guards.web'))) }}</small>
                                 </div>
                             </div>
                         </a>
@@ -430,13 +434,14 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <a class="dropdown-item" href="#"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="ti ti-logout me-2 ti-sm"></i>
-                            <span class="align-middle">Log Out</span>
+                            <span class="align-middle">{{ trans('layouts/navbar.logout') }}</span>
                         </a>
                         <form id="logout-form" action="{{ route('logout', auth()->guard()->name) }}" method="POST"
-                        style="display: none;">
-                        @csrf
+                            style="display: none;">
+                            @csrf
                         </form>
                     </li>
                 </ul>

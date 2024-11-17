@@ -16,7 +16,7 @@ class AdminSeeder extends Seeder
         $this->truncateTables(['users']);
 
         User::create([
-            'name' => 'Abdullah Mohamed',
+            'name' => ['en' => 'Abdullah Mohamed', 'ar' => 'عبدالله محمد'],
             'email' => 'bwazik@outlook.com',
             'password' => Hash::make('123456789'),
         ]);
