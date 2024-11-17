@@ -94,7 +94,7 @@
                 var student = $(this).val();
                 if (student) {
                     $.ajax({
-                        url: "{{ URL::to('refunds/student') }}/" + student,
+                        url: "{{ URL::to('admin/refunds/student') }}/" + student,
                         type: "GET",
                         dataType: "json",
                         success: function(data) {
