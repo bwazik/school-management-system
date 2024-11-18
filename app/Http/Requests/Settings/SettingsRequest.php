@@ -28,7 +28,7 @@ class SettingsRequest extends FormRequest
             'school_name_en' => 'required|string|max:255',
             'school_name_ar' => 'required|string|max:255',
             'school_title' => 'required|string|max:255',
-            'school_phone' => 'required|string|regex:/^\d{11}$/|min:11 ',
+            'school_phone' => 'required|numeric|min:11 ',
             'school_address_en' => 'required|string|max:255',
             'school_address_ar' => 'required|string|max:255',
             'school_email' => 'required|email|max:255',
