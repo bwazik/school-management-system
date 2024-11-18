@@ -183,6 +183,7 @@
 
 @section('js')
     <script>
+        // School Logo
         let accountUserImage = document.getElementById('uploadedAvatar');
         const fileInput = document.querySelector('.account-file-input'),
         resetFileInput = document.querySelector('.account-image-reset');
@@ -200,6 +201,7 @@
             };
         }
 
+        // Edit Settings
         $(document).ready(function() {
             var modalId = 'edit-form';
             var defaultLanguage = $('#edit-form #default_language').val();
@@ -248,6 +250,5 @@
                 });
             });
         });
-
     </script>
 @endsection
