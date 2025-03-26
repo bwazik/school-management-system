@@ -1,30 +1,31 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use Illuminate\Support\Facades\Route;
+use Livewire\Livewire;
+use App\Livewire\Calendar;
 use Illuminate\Support\Facades\Auth;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-use App\Http\Controllers\SchoolManagement\StagesController;
-use App\Http\Controllers\SchoolManagement\GradesController;
-use App\Http\Controllers\SchoolManagement\ClassroomsController;
-use App\Http\Controllers\SchoolManagement\SubjectsController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Finance\FeesController;
 use App\Http\Controllers\Users\ParentsController;
 use App\Http\Controllers\Users\TeachersController;
+use App\Http\Controllers\Finance\RefundsController;
+use App\Http\Controllers\Finance\InvoicesController;
+use App\Http\Controllers\Finance\PaymentsController;
+use App\Http\Controllers\Finance\ReceiptsController;
+use App\Http\Controllers\Settings\SettingsController;
+use App\Http\Controllers\SchoolManagement\GradesController;
+use App\Http\Controllers\SchoolManagement\StagesController;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use App\Http\Controllers\SchoolManagement\SubjectsController;
+use App\Http\Controllers\StudentActivities\LibraryController;
+use App\Http\Controllers\StudentActivities\QuizzesController;
+use App\Http\Controllers\SchoolManagement\ClassroomsController;
+use App\Http\Controllers\StudentActivities\QuestionsController;
 use App\Http\Controllers\StudentsManagement\StudentsController;
+use App\Http\Controllers\StudentActivities\AttendancesController;
 use App\Http\Controllers\StudentsManagement\PromotionsController;
 use App\Http\Controllers\StudentsManagement\GraduationsController;
-use App\Http\Controllers\Finance\FeesController;
-use App\Http\Controllers\Finance\InvoicesController;
-use App\Http\Controllers\Finance\ReceiptsController;
-use App\Http\Controllers\Finance\PaymentsController;
-use App\Http\Controllers\Finance\RefundsController;
-use App\Http\Controllers\StudentActivities\AttendancesController;
-use App\Http\Controllers\StudentActivities\QuizzesController;
-use App\Http\Controllers\StudentActivities\QuestionsController;
 use App\Http\Controllers\StudentActivities\OnlineClassesController;
-use App\Http\Controllers\StudentActivities\LibraryController;
-use App\Http\Controllers\Settings\SettingsController;
-use Livewire\Livewire;
 
 Route::controller(LoginController::class)->group(function() {
     Route::post('/{guard}/logout', 'logout')
@@ -317,6 +318,10 @@ Route::group(
             });
         });
     # End Settings
+
+    # Start Calendar
+        Route::get('/calendar', Calendar::class)->name('calendar');
+    # End Calendar
 
     Livewire::setUpdateRoute(function ($handle) {
         return Route::post('/livewire/update', $handle);

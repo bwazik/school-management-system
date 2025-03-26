@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('css')
-    <link rel="stylesheet" href="{{ URL::asset('assets/vendor/libs/tagify/tagify.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/tagify/tagify.css') }}" />
     <style>
         .custom-option-header {
             flex-direction: column;
@@ -35,7 +35,7 @@
 
 @section('js')
     {{-- Accordations Styling --}}
-    <script src="{{ URL::asset('assets/vendor/libs/tagify/tagify.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/tagify/tagify.js') }}"></script>
     <script>
         $(document).ready(function() {
             const answersTextAr = document.querySelector('#answers_text_ar'), answersTextEn = document.querySelector('#answers_text_en');
