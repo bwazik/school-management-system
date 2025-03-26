@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('css')
-    <link rel="stylesheet" href="{{ URL::asset('assets/vendor/libs/bs-stepper/bs-stepper.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/bs-stepper/bs-stepper.css') }}" />
     @livewireStyles
 @endsection
 
@@ -31,7 +31,7 @@
 
             var language = '';
             @if(App::getLocale() == 'ar')
-                var language = '{{ URL::asset('assets/json/datatable.json') }}';
+                var language = '{{ asset('assets/json/datatable.json') }}';
             @endif
 
             var table = $('#datatable').DataTable({

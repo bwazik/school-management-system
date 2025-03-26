@@ -27,7 +27,7 @@
 
             var language = '';
             @if(App::getLocale() == 'ar')
-                var language = '{{ URL::asset('assets/json/datatable.json') }}';
+                var language = '{{ asset('assets/json/datatable.json') }}';
             @endif
 
             var table = $('#datatable').DataTable({
