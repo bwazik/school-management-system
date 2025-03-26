@@ -49,7 +49,7 @@
                                                 class="dt-checkboxes form-check-input box1 me-2">
                                             <span>{{ $i }}&nbsp;-</span>
                                         </div>
-                                        <span class="answer-text" style="overflow-wrap: anywhere;">
+                                        <span class="question-text" style="overflow-wrap: anywhere;">
                                             {{ $question->question_text }}
                                         </span>
                                     </div>
